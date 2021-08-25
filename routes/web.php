@@ -49,3 +49,14 @@ Route::prefix('administracion')->group(function(){
 	});
 
 });
+
+
+// RUTA PARA ACCESO A LAS APIS
+
+Route::apiResource('apiBeca','BecaController');
+Route::apiResource('apiAlumno','AlumnoController');
+Route::apiResource('apiNivel','NivelController');
+Route::apiResource('apiServicio','ServicioController');
+Route::apiResource('apiTipoPago','TipoPagoController');
+Route::apiResource('apiCuenta','CuentaController');
+Route::apiResource('apiCaja','CajaController');
