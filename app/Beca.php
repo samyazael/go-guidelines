@@ -12,12 +12,6 @@ class Beca extends Model
     public $incrementing=false;
     public $timestamps=false;
 
-    // protected $table="cargos";
-    // protected $primaryKey="id_cargo";
-
-    // public $incrementing=false;
-    // public $timestamps=false;
-
     protected $fillable=[
     'id_beca',
     'beca',
