@@ -18,6 +18,8 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlite/dist/css/adminlte.min.css')}}">
 
+  <script type="text/javascript" src="{{asset('js/vue.js')}}"></script>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -47,3 +49,4 @@
 <script src="{{ asset('adminlite/dist/js/adminlte.min.js')}}"></script>
 </body>
 </html>
+<input type="hidden" name="route" value="{{url('/')}}">

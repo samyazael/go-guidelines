@@ -5,6 +5,10 @@
 @endsection
 
 @section('contenido')
+
+<div id='appAlumnos'>
+  
+
 	<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -45,31 +49,38 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">15700101</th>
-            <td>Samy Azael Lopez Acosta</td>
-            <td>samy.lopez@bica.edu.mx</td>
-            <td>9889677449</td>
-            <td>Secundaria</td>
-            <td>12/08/2021</td>
-            <td>Vigente</td>
+          <tr v-for="alumno in alumnos">
+            
+              <td>@{{alumno.matricula}}</td>
+              <td>@{{alumno.primer_apellido}} @{{alumno.segundo_apellido}}  @{{alumno.nombre}}</td>
+              <td>@{{alumno.correo}}</td>
+              <td>@{{alumno.celular}}</td>
+              <td>@{{alumno.nivel.nivel}}</td>
+              <td>@{{alumno.fecha_ingreso}}</td>
+              <td>@{{alumno.activo}}</td>
+
+
               <td width="10px">
                   <a href="#">
                     <i class="far fa-trash-alt fa-lg" aria-hidden="true"></i>
                   </a>
               </td>  
               <td width="10px">
-                  <a href="#">
+                  <a href="#" @click="showModal()">
                    <i class="fas fa-edit fa-lg"></i>
                   </a>
               </td> 
+            </tr>
         </tbody>
       </table>
       </div>
     </div>
+
    
-    </div>
-    </div>
+   
+    <!-- </div> -->
+
+    <!-- </div> -->
     <!-- /.content-header -->
 <!-- Modal para el formulario del registro de los moovimientos -->
 <div class="modal fade" id="registro_alumnos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -191,5 +202,16 @@
   </div>
   <!-- /.content-wrapper -->
 
+  </div>
+<!-- FIN INSTACNIA VUE -->
+
 
 @endsection
+
+@push('scripts')
+
+  <script src="{{asset('js/vue-resource.js')}}"></script>
+  <script src="{{asset('js/apis/apiAlumnos.js')}}"></script>
+
+
+  @endpush

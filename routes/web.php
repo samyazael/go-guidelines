@@ -64,3 +64,5 @@ Route::apiResource('apiCuenta','CuentaController');
 Route::apiResource('apiServicio','ServicioController');
 
 Route::apiResource('apiCaja','CajaController');
+
+// Route::view('file','filepond');
