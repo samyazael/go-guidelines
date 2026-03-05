@@ -40,7 +40,7 @@ This aligns with the Go team's direction. The [`modernize`](https://pkg.go.dev/g
 **Cursor** — copy into your project or `~/.cursor/skills/` for global use:
 
 ```bash
-cp -r skills/go-guidelines/ <your-project>/.cursor/skills/go-guidelines/
+cp -r claude/go-guidelines/skills/go-guidelines/ <your-project>/.cursor/skills/go-guidelines/
 ```
 
 **Claude Code:**
@@ -51,7 +51,7 @@ cp -r skills/go-guidelines/ <your-project>/.cursor/skills/go-guidelines/
 ```
 
 **Manual reference:**
-[SKILL.md](skills/go-guidelines/SKILL.md) (concise rules) | [reference.md](skills/go-guidelines/reference.md) (full examples & benchmarks)
+[SKILL.md](claude/go-guidelines/skills/go-guidelines/SKILL.md) (concise rules) | [reference.md](claude/go-guidelines/skills/go-guidelines/reference.md) (full examples & benchmarks)
 
 ## Contributing
 

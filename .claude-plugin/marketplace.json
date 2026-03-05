@@ -16,7 +16,7 @@
         "name": "Mehmet Sezer",
         "email": "m.szr98@gmail.com"
       },
-      "source": "."
+      "source": "./claude/go-guidelines"
     }
   ]
 }
